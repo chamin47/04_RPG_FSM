@@ -42,7 +42,9 @@ public class PlayerAnimationData
         JumpParameterHash = Animator.StringToHash(jumpParameterName);
         fallParameterHash = Animator.StringToHash(fallParameterName);
 
-        AirParameterHash = Animator.StringToHash(attackParameterName);
+        AttackParameterHash = Animator.StringToHash(attackParameterName);
         ComboAttackParameterHash = Animator.StringToHash(comboAttackParameterName);
     }
+
+    
 }
