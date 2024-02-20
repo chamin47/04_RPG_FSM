@@ -45,14 +45,29 @@ public class PlayerBaseState : IState
 
     protected virtual void AddInputActionsCallbacks()
     {
-
-    }
+		PlayerInput input = stateMachine.Player.Input;
+		input.PlayerActions.Movement.canceled += OnMovementCanceled;
+		input.PlayerActions.Run.started += OnRunStarted;
+	}
 
     protected virtual void RemoveInputActionsCallbacks()
     {
+		PlayerInput input = stateMachine.Player.Input;
+		input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+		input.PlayerActions.Run.started -= OnRunStarted;
+	}
 
-    }
-    private void ReadMovementInput()
+	protected virtual void OnRunStarted(InputAction.CallbackContext context)
+	{
+
+	}
+
+	protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+	{
+
+	}
+
+	private void ReadMovementInput()
     {
         stateMachine.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
     }
